@@ -1,0 +1,142 @@
+body {
+  font-family: verdana, helvetica, arial, sans-serif;
+  background-color: #f8f8f8;
+}
+.hidden {
+  display: none
+}
+.container {
+}
+
+.head-container {
+  width: 960px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #eee;
+  border: 1px solid #e5e5e5;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+  display: block;
+}
+
+.header {
+  text-align: left;
+  margin-left: 2em;
+  margin-right: auto;
+}
+
+.greeting {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 2em;
+}
+
+p#greeting{
+  font-size: 22px;
+}
+
+.menu-container {
+  width: 960px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #EEE;
+  border: 1px solid #e5e5e5;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+  display: block;
+}
+
+.body-container {
+  width: 960px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #EEE;
+  border: 1px solid #e5e5e5;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+  display: block;
+}
+
+.info-body {
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #e5e5e5;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+  display: block;
+}
+
+.info-body form {
+  border: #eee;
+}
+
+.info-body fieldset {
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #abc;
+  border-radius: 10px;
+  display: block;
+}
+.info-body legend {
+  border: 1px solid #abc;
+  padding: 4px;
+  border-radius: 3px;
+  color: #222;
+}
+.info-body label {
+  color: #222;
+  font-size: 18px;
+}
+.info-body input {
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 1;
+  border: 1px solid #e5e5e5;
+  padding: 3px;
+  margin-top: 5px;
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+}
+
+.addmember {
+  margin-left: auto;
+  margin-right: 20px;
+  text-align: right;
+}
+button#addmember {
+  font-size: 16px;
+  border: 1px solid #abc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
+.output {
+  padding: 1em;
+  margin: 1em;
+  display: block;
+}
+button#output {
+  font-size: 16px;
+  border: 1px solid #abc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
+.info-more {
+  margin: 0 16px 0 16px;
+  padding: 16px 16px 16px 16px;
+}
+.info-more a {
+  color: #21759b!important;
+}
+.foot-container {
+  margin: 0 0 0 16px;
+  padding: 16px 16px 0;
+  display: none;
+}
+

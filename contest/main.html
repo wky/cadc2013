@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3c.org/tr/Xhtml/DTD/xhtml-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文计大赛登陆</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="md5.js"></script>
+  </head>
+  <body>
+    <p id="identifier" class="hidden">登陆</p>
+    <div class="container">
+      <div class="heading">
+        <h1 id="h1">文计大赛用户登陆</h1>
+      </div>
+      <div class="body-container">
+        <div class="login-body">
+          <form action="login.py" name="login" onsubmit="javascript: return verify(this);">
+            <fieldset>
+              <p>
+                <label for="account">用户名<br />
+                  <input type="text" name="account" id="account" />
+                </label>
+              </p>
+              <p>
+                <label for="passwd">密码<br />
+                  <input type="password" name="passwd" id="passwd" />
+                </label>
+              </p>
+              <p class="submit">
+                <input id="submit" type="submit" value="登陆" />
+              </p>
+            </fieldset>
+          </form>
+        </div>
+        <div class="login-more">
+          <p>
+            <a id="initiator" href="javascript:change();">注册</a> &nbsp;|&nbsp;
+            <a href="">找回密码</a>
+          </p>
+          <p>
+            <a href="http://c.pkucada.org:8008/">返回大赛信息平台</a>
+            &nbsp;|&nbsp;
+            <a href="">HOWTO</a>
+          </p>
+        </div>
+        <div class="footer hidden">
+          <p>wky</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

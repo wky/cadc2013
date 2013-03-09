@@ -1,0 +1,19 @@
+<type>学习平台->学习交流网站</type>
+                <type>学习平台->数据库管理系统</type>
+                <type>学习平台->CAI教学课件</type>
+                <type>学习平台->虚拟实验平台</type>
+                <type>媒体设计->平面设计</type>
+                <type>媒体设计->动画设计</type>
+                <type>媒体设计->虚拟设计(人物、场景等)</type>
+                <type>媒体设计->DV短剧</type>
+                <type>媒体设计->电子杂志</type>
+                <type>媒体设计->其他</type>
+
+main.html
+GET 注册register.py/登陆login.py -> redirect{fail:main.html, success:home.html}
+
+
+home.html ajax info.py GET / POST
+填写团队groups/组长leader(entrants)/组员(entrants)
+
+生成pdf ajax GET output.py
