@@ -2,6 +2,9 @@ body {
   font-family: verdana, helvetica, arial, sans-serif;
   background-color: #f8f8f8;
 }
+a {
+  color: #21759b!important;
+}
 .hidden {
   display: none
 }
@@ -80,16 +83,23 @@ p#greeting{
   border: 1px solid #abc;
   border-radius: 10px;
   display: block;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
 }
 .info-body legend {
   border: 1px solid #abc;
   padding: 4px;
   border-radius: 3px;
   color: #222;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
 }
 .info-body label {
   color: #222;
   font-size: 18px;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
 }
 .info-body input {
   font-weight: 100;
@@ -105,16 +115,19 @@ p#greeting{
   box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
 }
 
-.addmember {
+.update {
   margin-left: auto;
   margin-right: 20px;
   text-align: right;
 }
-button#addmember {
+.update input {
+  padding-top: 5px;
+  padding-bottom: 5px;
   font-size: 16px;
   border: 1px solid #abc;
   border-radius: 5px;
   background-color: #f8f8f8;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
 }
 .output {
   padding: 1em;
@@ -126,14 +139,13 @@ button#output {
   border: 1px solid #abc;
   border-radius: 5px;
   background-color: #f8f8f8;
+  box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
 }
 .info-more {
   margin: 0 16px 0 16px;
   padding: 16px 16px 16px 16px;
 }
-.info-more a {
-  color: #21759b!important;
-}
+
 .foot-container {
   margin: 0 0 0 16px;
   padding: 16px 16px 0;

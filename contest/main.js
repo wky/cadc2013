@@ -35,6 +35,7 @@ function verify (form) {
     alert("密码不能为空!");
     return false; 
   }
+  form.style.display = 'none';
   form['passwd'].value = MD5(passwd);
   form['account'].value = window.btoa(usr)
   return true;

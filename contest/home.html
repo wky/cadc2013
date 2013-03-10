@@ -12,31 +12,33 @@
     <div class="container">
       <div class="head-container">
         <div class="header">
-          <h1 id="h1">文计大赛 报名</h1>
+          <h1 id="h1">文计大赛报名</h1>
         </div>
         <div class="greeting">
           <p id="greeting">你好, &nbsp;&nbsp;&nbsp;</p>
         </div>
       </div>
-      <div class="menu-container">
-        <div class="menu hidden">
-          <p>HELLO!</p>
-        </div>
+      <div class="menu-container hidden">
       </div>
       <div class="body-container">
         <div class="info-body">
-          <p>blah</p>
-          <p>blah</p>
-          <div class="leader" id="leader">
-            <form name="leader" action="javascript: void(0);" onsubmit="javascript: verifyStudent(this)">
+          <form name="info" action="info.py" method="POST" onsubmit="javascript: return verifyForm(this)">
+            <input type="hidden" name="operation" value="store" />
+            <div class="leader" id="leader">
               <fieldset>
                 <legend>组长信息</legend>
-                <input type="hidden" name="info-type" value="leader" />
-                <label>姓名&nbsp;<input type="text" name="name" id="leader-name" /></label>
-                <label>学号&nbsp;<input type="text" name="stu_id" id="leader-stu_id" /></label>
-                <label>性别&nbsp;<input type="text" name="gender" id="leader-gender" /></label>
+                <input type="hidden" name="leader-eid" />
+                <input type="hidden" name="leader-enable" value="true" />
+                <label>姓名&nbsp;<input type="text" name="leader-name" id="leader-name" /></label>
+                <label>学号&nbsp;<input type="text" name="leader-stu_id" id="leader-stu_id" /></label>
+                <label>性别&nbsp;
+                  <select name="leader-gender" id="leader-gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                  </select>
+                </label>
                 <label>所在院系&nbsp;
-                  <select name="school" id="leader-school">
+                  <select name="leader-school" id="leader-school">
                     <option value="数院">数学科学学院</option>
                     <option value="物院">物理学院</option>
                     <option value="化院">化学与分子工程学院</option>
@@ -72,10 +74,11 @@
                     <option value="武装">武装部</option>
                   </select>
                 </label>
-                <label>联系电话&nbsp;<input type="text" name="phone" id="leader-phone" /></label>
-                <label>电子邮箱&nbsp;<input type="text" name="email" id="leader-email" /></label>
+                <br />
+                <label>联系电话&nbsp;<input type="text" name="leader-phone" id="leader-phone" /></label>
+                <label>电子邮箱&nbsp;<input type="text" name="leader-email" id="leader-email" /></label>
                 <label>文计教师&nbsp;
-                  <select name="teacher" id="leader-teacher">
+                  <select name="leader-teacher" id="leader-teacher">
                     <option value="龙晓苑">龙晓苑</option>
                     <option value="孙栩">孙栩</option>
                     <option value="陈泓婕">陈泓婕</option>
@@ -88,20 +91,24 @@
                     <option value="穗志方">穗志方</option>
                   </select>
                 </label>
-                <input type="submit" value="保存" />
               </fieldset>
-            </form>
-          </div>
-          <div class="member1" id="member1">
-            <form name="member1" action="javascript: void(0);" onsubmit="javascript: verifyStudent(this)">
+            </div>
+            <div class="member1" id="member1">
               <fieldset>
-                <legend>组员信息</legend>
-                <input type="hidden" name="info-type" value="member1" />
-                <label>姓名&nbsp;<input type="text" name="name" id="member1-name" /></label>
-                <label>学号&nbsp;<input type="text" name="stu_id" id="member1-stu_id" /></label>
-                <label>性别&nbsp;<input type="text" name="gender" id="member1-gender" /></label>
+                <legend>组员信息1 (如没有请留空)</legend>
+                <input type="hidden" name="member1-eid" />
+                <label>加入组员1&nbsp;<input type="checkbox" name="member1-enable" value="true" /></label>
+                <br />
+                <label>姓名&nbsp;<input type="text" name="member1-name" id="member1-name" /></label>
+                <label>学号&nbsp;<input type="text" name="member1-stu_id" id="member1-stu_id" /></label>
+                <label>性别&nbsp;
+                  <select name="member1-gender" id="member1-gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                  </select>
+                </label>
                 <label>所在院系&nbsp;
-                  <select name="school" id="member1-school">
+                  <select name="member1-school" id="member1-school">
                     <option value="数院">数学科学学院</option>
                     <option value="物院">物理学院</option>
                     <option value="化院">化学与分子工程学院</option>
@@ -137,10 +144,11 @@
                     <option value="武装">武装部</option>
                   </select>
                 </label>
-                <label>联系电话&nbsp;<input type="text" name="phone" id="member1-phone" /></label>
-                <label>电子邮箱&nbsp;<input type="text" name="email" id="member1-email" /></label>
+                <br />
+                <label>联系电话&nbsp;<input type="text" name="member1-phone" id="member1-phone" /></label>
+                <label>电子邮箱&nbsp;<input type="text" name="member1-email" id="member1-email" /></label>
                 <label>文计教师&nbsp;
-                  <select name="teacher" id="member1-teacher">
+                  <select name="member1-teacher" id="member1-teacher">
                     <option value="龙晓苑">龙晓苑</option>
                     <option value="孙栩">孙栩</option>
                     <option value="陈泓婕">陈泓婕</option>
@@ -153,18 +161,22 @@
                     <option value="穗志方">穗志方</option>
                   </select>
                 </label>
-                <input type="submit" value="保存" />
               </fieldset>
-            </form>
-          </div>
-          <div class="member2" id="member2">
-            <form name="member2" action="javascript: void(0);" onsubmit="javascript: verifyStudent(this)">
+            </div>
+            <div class="member2" id="member2">
               <fieldset>
-                <legend>组员信息</legend>
-                <input type="hidden" name="info-type" value="member2" />
-                <label>姓名&nbsp;<input type="text" name="name" id="member2-name" /></label>
-                <label>学号&nbsp;<input type="text" name="stu_id" id="member2-stu_id" /></label>
-                <label>性别&nbsp;<input type="text" name="gender" id="member2-gender" /></label>
+                <legend>组员信息2 (如没有请留空)</legend>
+                <input type="hidden" name="member2-eid" />
+                <label>加入组员2&nbsp;<input type="checkbox" name="member2-enable" value="true"/></label>
+                <br />
+                <label>姓名&nbsp;<input type="text" name="member2-name" id="member2-name" /></label>
+                <label>学号&nbsp;<input type="text" name="member2-stu_id" id="member2-stu_id" /></label>
+                <label>性别&nbsp;
+                  <select name="member2-gender" id="member2-gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                  </select>
+                </label>
                 <label>所在院系&nbsp;
                   <select name="school" id="member2-school">
                     <option value="数院">数学科学学院</option>
@@ -202,6 +214,7 @@
                     <option value="武装">武装部</option>
                   </select>
                 </label>
+                <br />
                 <label>联系电话&nbsp;<input type="text" name="phone" id="member2-phone" /></label>
                 <label>电子邮箱&nbsp;<input type="text" name="email" id="member2-email" /></label>
                 <label>文计教师&nbsp;
@@ -218,25 +231,15 @@
                     <option value="穗志方">穗志方</option>
                   </select>
                 </label>
-                <input type="submit" value="保存" />
               </fieldset>
-            </form>
-          </div>
-          <div class="addmember">
-            <p class="hidden" id="member-cnt">0</p>
-            <button type="button" id="addmember" onclick="addMember()">添加成员</button>
-          </div>
-          <div class="group">
-            <form name="group" id="group" action="javascript: void(0);" onsubmit="javascript: verifyGroup(this)">
+            </div>
+            <div class="group" id="group">
               <fieldset>
-                <legend>团队信息</legend>
-                <input type="hidden" name="info-type" value="group" />
-                <input type="hidden" name="leader" id="group-leader" />
-                <input type="hidden" name="member1" id="group-member1" />
-                <input type="hidden" name="member2" id="group-member2" />
-                <label>作品名称&nbsp;<input type="text" name="title" id="title"/></label>
+                <legend>作品信息</legend>
+                <input type="hidden" name="group-gid"/>
+                <label>作品名称&nbsp;<input type="text" name="group-title" id="group-title"/></label>
                 <label>作品类型&nbsp;
-                  <select name="type" id="type">
+                  <select name="group-type" id="group-type">
                     <option value="软件应用与开发/网站设计">软件应用与开发->网站设计</option>
                     <option value="软件应用与开发/数据库管理系统">软件应用与开发->数据库管理系统</option>
                     <option value="软件应用与开发/CAI教学课件">软件应用与开发->CAI教学课件</option>
@@ -248,11 +251,14 @@
                     <option value="计算机音乐设计/音乐设计">计算机音乐设计->电子音乐、创编、视频配乐等</option>
                   </select>
                 </label>
-                <label>代表社团&nbsp;<input type="text" name="represent" id="represent"/></label>
-                <input type="submit" value="保存" />
+                <br />
+                <label>代表社团&nbsp;<input type="text" name="group-represent" id="group-represent"/></label>
               </fieldset>
-            </form>
-          </div>
+            </div>
+            <div class="update">
+              <input type="submit" value=" 保存 " />
+            </div>
+          </form>
           <div class="output">
             <p>输出</p>
             <button type="button" id="output" onclick="javascript: exportPDF()">输出表格</button>
