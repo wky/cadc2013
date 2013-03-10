@@ -4,8 +4,8 @@ from urlparse import parse_qs
 import MySQLdb as mdb
 from base64 import b64decode
 
-homeUrl = 'http://c.pkucada.org:8008/contest/home.html'
-failUrl = 'http://c.pkucada.org:8008/contest/main.html'
+homeUrl = 'window.location.href = \'http://c.pkucada.org:8008/contest/home.html\';'
+failUrl = 'window.location.href = \'http://c.pkucada.org:8008/contest/main.html\';'
 status = '200 OK'
 select = 'SELECT COUNT(*) FROM accounts WHERE login = %s;'
 insert = 'INSERT INTO accounts (login, passwd, time) VALUES (%s, %s, NOW());'

@@ -5,8 +5,8 @@ import MySQLdb as mdb
 from MySQLdb.cursors import DictCursor
 from base64 import b64decode
 
-homeUrl = 'http://c.pkucada.org:8008/contest/home.html'
-failUrl = 'http://c.pkucada.org:8008/contest/main.html'
+homeUrl = 'window.location.href = \'http://c.pkucada.org:8008/contest/home.html\';'
+failUrl = 'window.location.href = \'http://c.pkucada.org:8008/contest/main.html\';'
 status = '200 OK'
 select = 'SELECT passwd FROM accounts WHERE login = %s;'
 with open('response.tmpl') as tempfile:
