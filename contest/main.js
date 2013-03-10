@@ -13,16 +13,15 @@ function change (){
     h1.innerText = '文计大赛用户注册';
     submit.value = '注册';
     init.innerText = '登陆';
-    form.action = "register.py"
+    form['operation'].value = 'register';
   }else{
     id.innerText = '登陆';
     document.title = '文计大赛登陆';
     h1.innerText = '文计大赛用户登陆';
     submit.value = '登陆';
     init.innerText = '注册';
-    form.action = 'login.py';
+    form['operation'].value = 'login';
   }
-  form.reset();
 }
 function verify (form) {
   var usr = form['account'].value.trim();

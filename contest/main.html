@@ -17,6 +17,7 @@
         <div class="login-body">
           <form action="login.py" name="login" onsubmit="javascript: return verify(this);">
             <fieldset>
+              <input type="hidden" name="operation" value="login" />
               <p>
                 <label for="account">用户名<br />
                   <input type="text" name="account" id="account" />

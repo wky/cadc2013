@@ -13,10 +13,16 @@ with open('response.tmpl') as tempfile:
     template = tempfile.read()
 cookie1 = 'cadc_login=%s;path=/contest;max-age=3600'
 cookie2 = 'cadc_passwd=%s;path=/contest;max-age=3600'
+
+def set_cookie(headers, login, passwd):
+    headers.append(('Set-Cookie', cookie1 % login))
+    headers.append(('Set-Cookie', cookie2 % passwd))
+
 def application(environ, start_response):
     form = parse_qs(environ['QUERY_STRING'])
     login = form.get('account', [''])[0]
     passwd = form.get('passwd', [''])[0]
+    operation = form.get('operation', [''])[0]
     resp_dict = {'heading':'用户登陆'}
     headers = [('Content-Type', 'text/html')]
     try:
@@ -25,16 +31,27 @@ def application(environ, start_response):
         curs = conn.cursor()
         curs.execute(select, (b64decode(login), ))
         res = curs.fetchone()
-        if not res or res['passwd'] != passwd:
-            resp_dict['redirect'] = failUrl
-            resp_dict['info1'] = '登陆失败:'
-            resp_dict['info2'] = '用户名或密码错误'
-        else:
-            resp_dict['redirect'] = homeUrl
-            resp_dict['info1'] = '登陆成功!'
-            resp_dict['info2'] = ''
-            headers.append(('Set-Cookie', cookie1 % login))
-            headers.append(('Set-Cookie', cookie2 % passwd))
+        if operation == 'register':
+            if not res:
+                resp_dict['redirect'] = homeUrl
+                resp_dict['info1'] = '注册成功!'
+                resp_dict['info2'] = '跳转后请填写更多信息.'
+                curs.execute(insert, (b64decode(login), passwd))
+                set_cookie(login, passwd)
+            else:
+                resp_dict['redirect'] = failUrl
+                resp_dict['info1'] = '注册失败:'
+                resp_dict['info2'] = '"%s"已存在.' % b64decode(login)
+        elif operation == 'login':
+            if not res or res['passwd'] != passwd:
+                resp_dict['redirect'] = failUrl
+                resp_dict['info1'] = '登陆失败:'
+                resp_dict['info2'] = '用户名或密码错误.'
+            else:
+                resp_dict['redirect'] = homeUrl
+                resp_dict['info1'] = '登陆成功!'
+                resp_dict['info2'] = ''
+                set_cookie(login, passwd)
     except mdb.Error, e:
         print '***---***[login.py]', e
         resp_dict['redirect'] = failUrl
