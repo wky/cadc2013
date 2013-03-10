@@ -8,8 +8,13 @@ from base64 import b64decode
 homeUrl = 'http://c.pkucada.org:8008/contest/home.html'
 failUrl = 'http://c.pkucada.org:8008/contest/main.html'
 status = '200 OK'
+<<<<<<< HEAD
 select = 'SELECT * FROM accounts WHERE login = %s;'
 with open('response.tmpl') as tempfile:
+=======
+select = 'SELECT passwd FROM accounts WHERE login = %s;'
+with open('response.html') as tempfile:
+>>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
     template = tempfile.read()
 cookie = 'cadc_login=%s&cadc_passwd=%s;path=/contest;max-age=3600'
 
@@ -33,12 +38,11 @@ def application(environ, start_response):
             resp_dict['redirect'] = homeUrl
             resp_dict['info1'] = '登陆成功!'
             resp_dict['info2'] = ''
-            curs.execute(insert, (login, passwd))
             headers.append(('Set-Cookie', cookie % (login, passwd)))
         start_response(status, headers)
         return [template % resp_dict, ]
     except mdb.Error, e:
-        print '***---***[register.py]', e
+        print '***---***[login.py]', e
         resp_dict['redirect'] = failUrl
         resp_dict['info1'] = '服务器错误:'
         resp_dict['info2'] = '请联系<a href="mailto:wkyjyy@gmail.com" target="_blank">管理员<a>'

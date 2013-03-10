@@ -9,7 +9,11 @@ failUrl = 'http://c.pkucada.org:8008/contest/main.html'
 status = '200 OK'
 select = 'SELECT COUNT(*) FROM accounts WHERE login = %s;'
 insert = 'INSERT INTO accounts (login, passwd, time) VALUES (%s, %s, NOW());'
+<<<<<<< HEAD
 with open('response.tmpl') as tempfile:
+=======
+with open('response.html') as tempfile:
+>>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
     template = tempfile.read()
 cookie = 'cadc_login=%s&cadc_passwd=%s;path=/contest;max-age=3600'
 
@@ -17,7 +21,11 @@ def application(environ, start_response):
     form = parse_qs(environ['QUERY_STRING'])
     login = form.get('account', [''])[0]
     passwd = form.get('passwd', [''])[0]
+<<<<<<< HEAD
     resp_dict = {'heading':'用户注册'}
+=======
+    resp_dict = {'header':'用户注册'}
+>>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
     headers = [('Content-Type', 'text/html')]
     try:
         conn = mdb.connect(host='localhost', user='cadc2013',
@@ -42,3 +50,8 @@ def application(environ, start_response):
         resp_dict['redirect'] = failUrl
         resp_dict['info1'] = '服务器错误:'
         resp_dict['info2'] = '请联系<a href="mailto:wkyjyy@gmail.com">管理员<a>'
+<<<<<<< HEAD
+=======
+    finally:
+        if curs: curs.close()
+>>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
