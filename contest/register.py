@@ -9,23 +9,16 @@ failUrl = 'http://c.pkucada.org:8008/contest/main.html'
 status = '200 OK'
 select = 'SELECT COUNT(*) FROM accounts WHERE login = %s;'
 insert = 'INSERT INTO accounts (login, passwd, time) VALUES (%s, %s, NOW());'
-<<<<<<< HEAD
 with open('response.tmpl') as tempfile:
-=======
-with open('response.html') as tempfile:
->>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
     template = tempfile.read()
-cookie = 'cadc_login=%s&cadc_passwd=%s;path=/contest;max-age=3600'
-
+cookie1 = 'cadc_login=%s;path=/contest;max-age=3600'
+cookie2 = 'cadc_passwd=%s;path=/contest;max-age=3600'
 def application(environ, start_response):
     form = parse_qs(environ['QUERY_STRING'])
     login = form.get('account', [''])[0]
     passwd = form.get('passwd', [''])[0]
-<<<<<<< HEAD
+    print login, passwd
     resp_dict = {'heading':'用户注册'}
-=======
-    resp_dict = {'header':'用户注册'}
->>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
     headers = [('Content-Type', 'text/html')]
     try:
         conn = mdb.connect(host='localhost', user='cadc2013',
@@ -41,17 +34,14 @@ def application(environ, start_response):
             resp_dict['redirect'] = homeUrl
             resp_dict['info1'] = '注册成功!'
             resp_dict['info2'] = '跳转后请填写更多信息.'
-            curs.execute(insert, (login, passwd))
-            headers.append(('Set-Cookie', cookie % (login, passwd)))
-        start_response(status, headers)
-        return [template % resp_dict, ]
+            curs.execute(insert, (b64decode(login), passwd))
+            headers.append(('Set-Cookie', cookie1 % login))
+            headers.append(('Set-Cookie', cookie2 % passwd))
     except mdb.Error, e:
         print '***---***[register.py]', e
         resp_dict['redirect'] = failUrl
         resp_dict['info1'] = '服务器错误:'
         resp_dict['info2'] = '请联系<a href="mailto:wkyjyy@gmail.com">管理员<a>'
-<<<<<<< HEAD
-=======
-    finally:
-        if curs: curs.close()
->>>>>>> 1515ffd9ba9a6900df348a4ea01e4cf0f89ac988
+    start_response(status, headers)
+    return [template % resp_dict, ]
+
