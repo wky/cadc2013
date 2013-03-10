@@ -19,7 +19,6 @@ function onPageLoad(){
   login = window.atob(login);
   greeting.innerHTML = '你好,' + login;
   var xhr = new XMLHttpRequest();
-  xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   xhr.onreadystatechage = function (){
     if (xhr.readyState != 4){
       return;
@@ -33,7 +32,14 @@ function onPageLoad(){
     var info = JSON.parse(xhr.responseText);
     fillInfo(info);
   };
+  xhr.onerror = function() {
+    info_body.style.display = 'none';
+    greeting.innerText = '服务器错误, 读取信息失败! 请重新登陆.';
+    clearCookie();
+    redirectMain();
+  };
   xhr.open('POST', baseUrl, true);
+  xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   xhr.send('operation=retrieve');
 }
 
@@ -45,7 +51,7 @@ function fillInfo(info){
 }
 
 function redirectMain(){
-  setInterval(function(){
+  setTimeout(function(){
     window.location.href = 'main.html';
   },2500);
 }

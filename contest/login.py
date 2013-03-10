@@ -9,6 +9,7 @@ homeUrl = 'window.location.href = \'http://c.pkucada.org:8008/contest/home.html\
 failUrl = 'window.location.href = \'http://c.pkucada.org:8008/contest/main.html\';'
 status = '200 OK'
 select = 'SELECT passwd FROM accounts WHERE login = %s;'
+insert = 'INSERT INTO accounts (login, passwd, time) VALUES (%s, %s, NOW());'
 with open('response.tmpl') as tempfile:
     template = tempfile.read()
 cookie1 = 'cadc_login=%s;path=/contest;max-age=3600'
@@ -37,7 +38,7 @@ def application(environ, start_response):
                 resp_dict['info1'] = '注册成功!'
                 resp_dict['info2'] = '跳转后请填写更多信息.'
                 curs.execute(insert, (b64decode(login), passwd))
-                set_cookie(login, passwd)
+                set_cookie(headers, login, passwd)
             else:
                 resp_dict['redirect'] = failUrl
                 resp_dict['info1'] = '注册失败:'
@@ -51,7 +52,7 @@ def application(environ, start_response):
                 resp_dict['redirect'] = homeUrl
                 resp_dict['info1'] = '登陆成功!'
                 resp_dict['info2'] = ''
-                set_cookie(login, passwd)
+                set_cookie(headers, login, passwd)
     except mdb.Error, e:
         print '***---***[login.py]', e
         resp_dict['redirect'] = failUrl

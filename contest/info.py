@@ -26,11 +26,14 @@ select_entrant = 'SELECT * FROM entrants WHERE eid = %s;'
 entrant_prefixes = ['leader', 'member1', 'member2']
 
 def make_error(op, err, start_response):
+    print '||||||[][]**--++****ERROR:', err
+    headers = []
+    response = ''
     if op == 'store':
         headers = [('Content-Type', 'text/html')]
         response = template % {'heading':'保存信息', 'redirect':failUrl,
         'info1':'保存信息失败:', 'info':err}
-    else if op == 'retrieve':
+    elif op == 'retrieve':
         headers = [('Content-Type', 'text/json')]
         response = json.dumps({'success':false, 'message':err})
     start_response(status, headers)
@@ -80,18 +83,21 @@ def application(environ, start_response):
     login = b64decode(cookie['cadc_login'].value)
     passwd = cookie['cadc_passwd'].value
     operation = form['operation']
-    resp_dict = {'heading':'保存信息'}
+    resp_dict = {'heading':'保存信息', 'redirect':homeUrl,
+        'info1':'','info2':''}
     headers = [('Content-Type', 'text/html')]
+    print '[*****]--[***] login:', login
     try:
         conn = mdb.connect(host='localhost', user='cadc2013', passwd='cadc2013/wky',
             db='cadc2013', cursorclass=DictCursor)
         curs = conn.cursor()
-        curs.execute(select_account, (b64decode(login), passwd))
+        curs.execute(select_account, (login, passwd))
         res = curs.fetchone()
         if not res:
             return make_error(operation, '用户名或密码错误', start_response)
         gid = res.get('grp_id', '')
         if operation == 'retrieve':
+            print operation
             headers = [('Content-Type', 'text/json')]
             resp_dict = {'success':true}
             if gid:
@@ -101,11 +107,15 @@ def application(environ, start_response):
                 entrant_ids = [res.get(prefix, '') for prefix in entrant_prefixes]
                 load_entrants(resp_dict, curs, entrant_ids, entrant_prefixes)
             start_response(status, headers)
+            print '*********response:', resp_dict
             return [json.dumps(resp_dict), ]
         elif operation == 'store':
+            print operation
             try:
                 store_entrants(curs, form, entrant_prefixes)
                 store_group(curs, form, 'group')
+                resp_dict['info1'] = '信息录入成功'
+                resp_dict['info2'] = ''
             except mdb.Error, e:
                 print '***---***[info.py]', e
                 resp_dict['redirect'] = previousUrl
