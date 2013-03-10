@@ -1,0 +1,21 @@
+*** Starting uWSGI 1.0.3-debian (64bit) on [Sun Mar 10 07:00:45 2013] ***
+compiled with version: 4.6.3 on 17 July 2012 02:26:54
+current working directory: /home/wky/wordpress/contest
+detected binary path: /usr/bin/uwsgi-core
+*** WARNING: you are running uWSGI without its master process manager ***
+your memory page size is 4096 bytes
+uwsgi socket 0 bound to TCP address 127.0.0.1:9012 fd 4
+Python version: 2.7.3 (default, Aug  1 2012, 05:25:23)  [GCC 4.6.3]
+Python main interpreter initialized at 0xc70f50
+your server socket listen backlog is limited to 100 connections
+*** Operational MODE: single process ***
+Traceback (most recent call last):
+  File "/home/wky/wordpress/contest/login.py", line 5, in <module>
+    from mdb.cursors import DictCursor
+ImportError: No module named mdb.cursors
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 10576, cores: 1)
+[pid: 10576|app: -1|req: -1/1] 162.105.90.55 () {42 vars in 1345 bytes} [Sun Mar 10 07:01:00 2013] GET /contest/login.py?asdasd=asdad&xx=xxx => generated 48 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 63 bytes (0 switches on core 0)
+[pid: 10576|app: -1|req: -1/2] 162.105.90.55 () {42 vars in 1345 bytes} [Sun Mar 10 07:03:36 2013] GET /contest/login.py?asdasd=asdad&xx=xxx => generated 48 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 63 bytes (0 switches on core 0)

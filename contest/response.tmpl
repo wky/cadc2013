@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3c.org/tr/Xhtml/DTD/xhtml-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文计大赛</title>
+    <script type="text/javascript">
+      function redirect () {
+        window.location.href = '%(redirect)s';
+      }
+    </script>
+    <style type="text/css">
+      body {
+        font-family: verdana, helvetica, arial, sans-serif;
+      }
+      .hidden {
+        display: none
+      }
+      .container {
+        padding: 1em;
+      }
+      .heading {
+        width: 320px;
+        margin-top: 30px;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .body-container {
+        width: 320px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #f8f8f8;
+        border: 1px solid #e5e5e5;
+        box-shadow: rgba(200,200,200,0.7) 0 4px 10px -1px;
+        font-size: 18px;
+        display: block;
+      }
+      .login-body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      p.info2 {
+        margin-left: 1.25em;
+      }
+      .info2 a {
+        color: #21759b!important;
+      }
+    </style>
+  </head>
+  <body onload="javascript: setInterval(redirect,2500)">
+    <div class="container">
+      <div class="heading">
+        <h1 id="h1">%(heading)s</h1>
+      </div>
+      <div class="body-container">
+        <div class="login-body">
+          <p class="info1">
+            %(info1)s
+          </p>
+          <p class="info2">
+            %(info2)s
+          </p>
+        </div>
+        <div class="footer hidden">
+          <p>wky</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
