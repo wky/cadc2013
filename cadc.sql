@@ -36,7 +36,7 @@ create table groups (
     `member1` int,
     `member2` int,
     `ref` int,
-    `extra` varchar(255) not null;
+    `extra` varchar(255) not null,
     foreign key (`leader`) references entrants(`eid`),
     foreign key (`member1`) references entrants(`eid`),
     foreign key (`member2`) references entrants(`eid`),

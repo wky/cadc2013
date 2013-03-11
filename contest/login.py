@@ -30,6 +30,7 @@ def application(environ, start_response):
         conn = mdb.connect(host='localhost', user='cadc2013', passwd='cadc2013/wky',
             db='cadc2013', cursorclass=DictCursor)
         curs = conn.cursor()
+        curs.execute('set names utf8;')
         curs.execute(select, (b64decode(login), ))
         res = curs.fetchone()
         if operation == 'register':
